@@ -1,8 +1,8 @@
 package zc;
 
-import com.ga.zc.core.MyProtocolBean;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import zc.core.MyProtocolBean;
 
 /**
  * Created by yaozb on 15-4-11.

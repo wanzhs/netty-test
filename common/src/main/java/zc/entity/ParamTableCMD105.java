@@ -1,6 +1,5 @@
 package zc.entity;
 
-import org.springframework.web.servlet.mvc.method.annotation.PathVariableMapMethodArgumentResolver;
 
 /**
  *   服务器应答充电桩签到命令

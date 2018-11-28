@@ -2,10 +2,6 @@ package zc.entity;
 
 import java.util.Date;
 
-import javax.lang.model.type.PrimitiveType;
-
-import ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy;
-
 /**
  * 后台服务器下发充电桩工作参数
  * @author 63136
