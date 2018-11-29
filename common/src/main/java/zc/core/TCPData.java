@@ -3,6 +3,7 @@ package zc.core;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import zc.utils.Md5;
+import zc.utils.SystemNum;
 
 /**
  * 本通信协议采用json格式传输数据
@@ -37,13 +38,12 @@ public class TCPData {
      * 构造函数   供发送数据时使用
      *
      * @param cmd
-     * @param sn
      * @param data
      */
-    public TCPData(Integer cmd, Integer sn, String data) {
+    public TCPData(Integer cmd, String data) {
         this.CMD = cmd;
         this.DATA = data;
-        this.SN = sn;
+        this.SN = SystemNum.getSystem();
         this.CHECK = Md5.check(DATA);
     }
 }

@@ -20,6 +20,7 @@ import zc.core.ProtocolBean;
 import zc.core.TCPData;
 import zc.entity.ParamTableCMD1;
 import zc.utils.JsonUtils;
+import zc.utils.SystemNum;
 
 import java.util.concurrent.TimeUnit;
 
@@ -71,9 +72,8 @@ public class NettyClientBootstrap {
             paramTableCMD1.setAdminpwd("admin123").setAdverEndTime("1995-09-12 20:20:20");
 
             //添加到通信报文
-
             String dataStr=JsonUtils.objectToJsonOrdered(paramTableCMD1);
-            TCPData tcpData = new TCPData(1,234,dataStr);
+            TCPData tcpData = new TCPData(1, dataStr);
             String tcpDataStr =JsonUtils.objectToJson(tcpData);
 
             //添加到发送报文

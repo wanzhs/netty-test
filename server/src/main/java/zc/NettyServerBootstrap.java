@@ -56,7 +56,7 @@ public class NettyServerBootstrap {
     public static void main(String []args) throws InterruptedException, JsonProcessingException {
         NettyServerBootstrap bootstrap=new NettyServerBootstrap(9999);
         while (true){
-            TimeUnit.SECONDS.sleep(10);
+            TimeUnit.SECONDS.sleep(3);
         }
     }
 }

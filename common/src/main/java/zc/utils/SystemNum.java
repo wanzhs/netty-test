@@ -1,6 +1,11 @@
 package zc.utils;
 
 
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -8,16 +13,50 @@ import java.util.UUID;
  */
 public class SystemNum {
 
+    private static int totalCount = 100000000;
+    private static int customerID;
+
+    private static int maxNum=900000000;
+
     /**
      * 生成编号信息
      * @return
      */
-    public static Long getSystem()
+    public static Integer getSystem()
     {
+        if(customerID==maxNum)
+        {
+            totalCount=1;
+        }
+        ++totalCount;
+        customerID = totalCount;
+        System.out.println("增加一个:"+customerID);
 
-        Long dateTimeNum=System.currentTimeMillis();
+        return  Integer.valueOf(getCustomerID());
 
-        return dateTimeNum;
+
+        //DateFormat sdf = new SimpleDateFormat("ssSSS");
+        //return  Integer.valueOf(sdf.format(new Date())+getRandom(4));
+    }
+
+    public static String getCustomerID() {
+        DecimalFormat decimalFormat = new DecimalFormat("000000000");
+        return decimalFormat.format(customerID);
+    }
+
+
+    /**
+     * 生成固定长度随机码
+     * @param n    长度
+     */
+    private static long getRandom(long n) {
+        long min = 1,max = 9;
+        for (int i = 1; i < n; i++) {
+            min *= 10;
+            max *= 10;
+        }
+        long rangeLong = (((long) (new Random().nextDouble() * (max - min)))) + min ;
+        return rangeLong;
     }
 
     /**
@@ -31,7 +70,16 @@ public class SystemNum {
     }
 
     public static void main(String[] args) {
-        System.out.println(getSystem());
-        System.out.println(getUUID32());
+
+        while(true){
+
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(getSystem());
+        }
+
     }
 }
