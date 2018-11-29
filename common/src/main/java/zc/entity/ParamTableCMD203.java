@@ -1,10 +1,15 @@
 package zc.entity;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * 服务器应答帐户查询信息
  * @author 63136
  *
  */
+@Data
+@Accessors(chain = true)
 public class ParamTableCMD203 
 {
  

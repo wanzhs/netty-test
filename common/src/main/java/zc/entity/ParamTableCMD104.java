@@ -1,11 +1,16 @@
 package zc.entity;
 
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  *   充电桩状态信息包上报
  * @author 63136
  *
  */
+@Data
+@Accessors(chain = true)
 public class ParamTableCMD104 
 {
  

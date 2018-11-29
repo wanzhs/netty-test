@@ -1,10 +1,15 @@
 package zc.entity;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * 广告素材下载参数
  * @author 63136
  *
  */
+@Data
+@Accessors(chain = true)
 public class AdvertisingDownloadParameters {
 	
 	/**
@@ -20,5 +25,8 @@ public class AdvertisingDownloadParameters {
 	 */
 	private Integer time;
 	
+	public AdvertisingDownloadParameters()
+	{
 
+	}
 }

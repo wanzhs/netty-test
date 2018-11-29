@@ -1,12 +1,16 @@
 package zc.entity;
 
- 
+
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  *  充电桩开始充电命令
  * @author 63136
  *
  */
+@Data
+@Accessors(chain = true)
 public class ParamTableCMD108 
 {
  

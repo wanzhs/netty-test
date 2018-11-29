@@ -1,5 +1,8 @@
 package zc.entity;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 import java.util.Date;
 
 /**
@@ -7,6 +10,8 @@ import java.util.Date;
  * @author 63136
  *
  */
+@Data
+@Accessors(chain = true)
 public class ParamTableCMD1 
 {
 	//充电桩编码--ASCII码

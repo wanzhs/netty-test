@@ -1,10 +1,14 @@
 package zc.entity;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * 告警状态与结束原因编码定义
  * @author 63136
  *
  */
+
 public class AlarmStatusConstants {
 	
 	//状态正常
@@ -359,7 +363,7 @@ public class AlarmStatusConstants {
 	
 	//未知异常
 	public static final Integer states1000=1000;
-	
-		
-		 
+
+
+
 }

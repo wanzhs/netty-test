@@ -1,10 +1,15 @@
 package zc.entity;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * 充电桩响应后台下发峰平谷电费计价策略信息
  * @author 63136
  *
  */
+@Data
+@Accessors(chain = true)
 public class ParamTableCMD1304 
 {
  

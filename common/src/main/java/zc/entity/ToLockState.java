@@ -1,10 +1,15 @@
 package zc.entity;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * 地锁状态
  * @author 63136
  *
  */
+@Data
+@Accessors(chain = true)
 public class ToLockState {
  
 	/**
@@ -21,4 +26,9 @@ public class ToLockState {
 	 * 77-通信异常
 	 */
 	private Integer state;
+
+	public ToLockState()
+	{
+
+	}
 }
