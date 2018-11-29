@@ -2,6 +2,7 @@ package zc.core;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import zc.utils.Md5;
 
 @Data
 @Accessors(chain = true)
@@ -23,7 +24,10 @@ public class TCPData {
      */
     private Integer SN;
 
-    public TCPData() {
+    public TCPData(Integer cmd, Integer sn, String data) {
+        this.CMD = cmd;
+        this.DATA = data;
+        this.SN = sn;
+        this.CHECK = Md5.check(DATA);
     }
-
 }

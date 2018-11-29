@@ -51,10 +51,11 @@ public class Md5 {
      */
     public static String check(String paramMd5) 
     {
+        String md5=md5(paramMd5);
     	StringBuffer buffer=new StringBuffer();
     	
     	String strIndex="";
-    	for(int i=0;i<paramMd5.length();i++) 
+    	for(int i=0;i<md5.length();i++)
 		{
 			String temp[]=strKey.split(",");
 			for(int j=0;j<temp.length;j++) 
@@ -62,7 +63,7 @@ public class Md5 {
 				if(i==j) 
 				{
 				    Integer index=Integer.parseInt(temp[j]);
-				    strIndex=paramMd5.substring(index,index+1);
+				    strIndex=md5.substring(index,index+1);
 					buffer.append(strIndex);
 				}
 				

@@ -71,9 +71,9 @@ public class NettyClientBootstrap {
             paramTableCMD1.setAdminpwd("admin123").setAdverEndTime("1995-09-12 20:20:20");
 
             //添加到通信报文
-            TCPData tcpData = new TCPData();
+
             String dataStr=JsonUtils.objectToJsonOrdered(paramTableCMD1);
-            tcpData.setCMD(1).setCHECK("123").setSN(234).setDATA(dataStr);
+            TCPData tcpData = new TCPData(1,234,dataStr);
             String tcpDataStr =JsonUtils.objectToJson(tcpData);
 
             //添加到发送报文
