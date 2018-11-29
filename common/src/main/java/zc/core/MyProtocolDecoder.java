@@ -58,7 +58,7 @@ public class MyProtocolDecoder extends LengthFieldBasedFrameDecoder {
         byte check = in.readByte();
 //        //读取数据尾字段
         short footer = in.readShort();
-        MyProtocolBean bean = new MyProtocolBean(length, new String(content));
+        ProtocolBean bean = new ProtocolBean(length, new String(content));
         System.out.println("MyProtocolDecoder:"+bean.toString());
 //        bean.setCheck(check).setSegmentation(segmentation);
         return bean;

@@ -13,7 +13,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="client" target="1.5" />
-      <module name="common" target="1.5" />
+      <module name="common" target="6" />
       <module name="server" target="1.5" />
       <module name="zc-server-dev" target="1.5" />
     </bytecodeTargetLevel>

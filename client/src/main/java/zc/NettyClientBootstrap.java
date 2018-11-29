@@ -15,11 +15,11 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 import io.netty.util.concurrent.EventExecutorGroup;
-import zc.core.MsgTransfer;
-import zc.core.MyProtocolBean;
 import zc.core.MyProtocolEncoder;
-import zc.params.ParamTableCMD1;
-import zc.params.User;
+import zc.core.ProtocolBean;
+import zc.core.TCPData;
+import zc.entity.ParamTableCMD1;
+import zc.utils.JsonUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,54 +31,54 @@ public class NettyClientBootstrap {
     private String host;
     private SocketChannel socketChannel;
     private static final EventExecutorGroup group = new DefaultEventExecutorGroup(20);
+
     public NettyClientBootstrap(int port, String host) throws InterruptedException {
         this.port = port;
         this.host = host;
         start();
     }
+
     private void start() throws InterruptedException {
-        EventLoopGroup eventLoopGroup=new NioEventLoopGroup();
-        Bootstrap bootstrap=new Bootstrap();
+        EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
+        Bootstrap bootstrap = new Bootstrap();
         bootstrap.channel(NioSocketChannel.class);
-        bootstrap.option(ChannelOption.SO_KEEPALIVE,true);
+        bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
         bootstrap.group(eventLoopGroup);
-        bootstrap.remoteAddress(host,port);
+        bootstrap.remoteAddress(host, port);
         bootstrap.handler(new ChannelInitializer<SocketChannel>() {
             @Override
             protected void initChannel(SocketChannel socketChannel) throws Exception {
-                socketChannel.pipeline().addLast(new IdleStateHandler(20,10,0));
+                socketChannel.pipeline().addLast(new IdleStateHandler(20, 10, 0));
 //                socketChannel.pipeline().addLast(new ObjectEncoder());
                 socketChannel.pipeline().addLast(new MyProtocolEncoder());
                 socketChannel.pipeline().addLast(new ObjectDecoder(ClassResolvers.cacheDisabled(null)));
             }
         });
-        ChannelFuture future =bootstrap.connect(host,port).sync();
+        ChannelFuture future = bootstrap.connect(host, port).sync();
         if (future.isSuccess()) {
-            socketChannel = (SocketChannel)future.channel();
+            socketChannel = (SocketChannel) future.channel();
             System.out.println("connect server  成功---------");
         }
     }
-    public static void main(String[]args) throws InterruptedException, JsonProcessingException {
-        NettyClientBootstrap bootstrap=new NettyClientBootstrap(9999,"localhost");
-        while (true){
+
+    public static void main(String[] args) throws InterruptedException, JsonProcessingException {
+        NettyClientBootstrap bootstrap = new NettyClientBootstrap(9999, "localhost");
+        while (true) {
             TimeUnit.SECONDS.sleep(3);
-//            bootstrap.socketChannel.writeAndFlush(new MyProtocolBean((byte) 0xA,(byte)0xC,"Hello,Netty".length(),"Hello,Netty"));
-            ObjectMapper objectMapper=new ObjectMapper();
-            MsgTransfer msgTransfer=new MsgTransfer();
-            msgTransfer.setCmd(1).setCmd(1).setSn(123)
-                    .setData(objectMapper.writeValueAsString(new User()
-                            .setUsername("wanzhs").setPassword("admin123")));
-            String jsonstr=objectMapper.writeValueAsString(msgTransfer);
+            //测试发送协议数据
+            //工作参数和命令设置
+            ParamTableCMD1 paramTableCMD1 = new ParamTableCMD1();
+            paramTableCMD1.setAdminpwd("admin123").setAdverEndTime("1995-09-12 20:20:20");
 
-            bootstrap.socketChannel.writeAndFlush(new MyProtocolBean(jsonstr.length(),jsonstr));
+            //添加到通信报文
+            TCPData tcpData = new TCPData();
+            String dataStr=JsonUtils.objectToJsonOrdered(paramTableCMD1);
+            tcpData.setCMD(1).setCHECK("123").setSN(234).setDATA(dataStr);
+            String tcpDataStr =JsonUtils.objectToJson(tcpData);
 
-            ParamTableCMD1 paramTableCMD1=new ParamTableCMD1();
-            paramTableCMD1.setAdminpwd("password").setAdverStartTime("2018-09-11 21:22:22");
-
-            msgTransfer.setCmd(2).setData(objectMapper.writeValueAsString(paramTableCMD1));
-            jsonstr=objectMapper.writeValueAsString(msgTransfer);
-            bootstrap.socketChannel.writeAndFlush(new MyProtocolBean(jsonstr.length(),jsonstr));
-
+            //添加到发送报文
+            ProtocolBean protocolBean=new ProtocolBean(tcpDataStr.length(), tcpDataStr);
+            bootstrap.socketChannel.writeAndFlush(protocolBean);
         }
     }
 }

@@ -5,7 +5,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class MyProtocolBean {
+public class ProtocolBean {
     //数据头 2字节  0xAAF5
     private final short header= (short) 0xAAF5;
     //数据长度 2字节
@@ -20,7 +20,7 @@ public class MyProtocolBean {
     private final short footer=(short)0xF5AA;
 
 
-    public MyProtocolBean(int length, String content) {
+    public ProtocolBean(int length, String content) {
         this.length = (short) length;
         this.content = content;
         this.check = this.sumCheck(content.getBytes());
@@ -36,7 +36,7 @@ public class MyProtocolBean {
     }
     @Override
     public String toString() {
-        return "MyProtocolBean{" +
+        return "ProtocolBean{" +
                 "header=0x" + String.format("%X",header) +
                 ", length=" + length +
                 ", segmentation=0x" + String.format("%X",segmentation) +
