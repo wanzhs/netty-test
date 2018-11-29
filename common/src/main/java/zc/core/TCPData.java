@@ -24,6 +24,19 @@ public class TCPData {
      */
     private Integer SN;
 
+    /**
+     * 空构造函数  供解码时使用
+     */
+    public TCPData() {
+    }
+
+    /**
+     * 构造函数   供发送数据时使用
+     *
+     * @param cmd
+     * @param sn
+     * @param data
+     */
     public TCPData(Integer cmd, Integer sn, String data) {
         this.CMD = cmd;
         this.DATA = data;

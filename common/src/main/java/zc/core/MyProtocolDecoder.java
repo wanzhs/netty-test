@@ -46,9 +46,6 @@ public class MyProtocolDecoder extends LengthFieldBasedFrameDecoder {
         short header = in.readShort();
         //读取数据长度字段
         short length = in.readShort();
-//        if (in.readableBytes() != length) {
-//            throw new Exception("标记的长度不符合实际长度"+":标记长度"+length+":实际长度:"+in.readableBytes());
-//        }
         //读取分割字段
         short segmentation = in.readShort();
         //读取数据字段
@@ -59,8 +56,6 @@ public class MyProtocolDecoder extends LengthFieldBasedFrameDecoder {
 //        //读取数据尾字段
         short footer = in.readShort();
         ProtocolBean bean = new ProtocolBean(length, new String(content));
-        System.out.println("MyProtocolDecoder:"+bean.toString());
-//        bean.setCheck(check).setSegmentation(segmentation);
         return bean;
     }
 }
