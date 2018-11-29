@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import zc.utils.Md5;
 
+/**
+ * 本通信协议采用json格式传输数据
+ */
 @Data
 @Accessors(chain = true)
 public class TCPData {

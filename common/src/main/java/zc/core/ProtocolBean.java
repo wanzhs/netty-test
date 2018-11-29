@@ -3,6 +3,9 @@ package zc.core;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+/**
+ * 报文格式辅助类
+ */
 @Data
 @Accessors(chain = true)
 public class ProtocolBean {
