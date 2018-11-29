@@ -7,9 +7,9 @@ import io.netty.handler.codec.MessageToByteEncoder;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 
-public class MyProtocolEncoder extends MessageToByteEncoder<MyProtocolBean> {
+public class MyProtocolEncoder extends MessageToByteEncoder<ProtocolBean> {
     @Override
-    protected void encode(ChannelHandlerContext ctx, MyProtocolBean msg, ByteBuf out) throws Exception{
+    protected void encode(ChannelHandlerContext ctx, ProtocolBean msg, ByteBuf out) throws Exception{
         if (msg==null){
             throw new Exception("msg is null");
         }
