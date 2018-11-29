@@ -140,12 +140,12 @@ public enum CmdType  implements Behaviour{
     public void setIndex(int index) {  
         this.index = index;  
     }
-	@Override
+//	@Override
 	public void print() {
 		System.out.println(this.index+":"+this.name); 
 		
 	}
-	@Override
+//	@Override
 	public String getInfo() {
 		 
 		return this.name; 

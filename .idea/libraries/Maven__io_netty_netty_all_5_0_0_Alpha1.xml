@@ -1,13 +1,15 @@
 <component name="libraryTable">
   <library name="Maven: io.netty:netty-all:5.0.0.Alpha1">
     <CLASSES>
-      <root url="file://$MAVEN_REPOSITORY$/io/netty/netty-all/5.0.0.Alpha1" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/5.0.0.Alpha1/netty-all-5.0.0.Alpha1.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/5.0.0.Alpha1/netty-all-5.0.0.Alpha1-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="file://$MAVEN_REPOSITORY$/io/netty/netty-all/5.0.0.Alpha1" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/5.0.0.Alpha1/netty-all-5.0.0.Alpha1-sources.jar!/" />
     </SOURCES>
-    <jarDirectory url="file://$MAVEN_REPOSITORY$/io/netty/netty-all/5.0.0.Alpha1" recursive="false" />
     <jarDirectory url="file://$MAVEN_REPOSITORY$/io/netty/netty-all/5.0.0.Alpha1" recursive="false" type="SOURCES" />
   </library>
 </component>
