@@ -13,6 +13,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.timeout.IdleStateHandler;
+import io.netty.util.AttributeKey;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 import io.netty.util.concurrent.EventExecutorGroup;
 import zc.core.MyProtocolEncoder;
@@ -63,7 +64,7 @@ public class NettyClientBootstrap {
     }
 
     public static void main(String[] args) throws InterruptedException, JsonProcessingException {
-        NettyClientBootstrap bootstrap = new NettyClientBootstrap(9999, "localhost");
+        NettyClientBootstrap bootstrap = new NettyClientBootstrap(9999, "192.168.2.114");
         while (true) {
             TimeUnit.SECONDS.sleep(3);
             //测试发送协议数据
