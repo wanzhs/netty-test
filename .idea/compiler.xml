@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="client" />
         <module name="common" />
+        <module name="mqtt" />
         <module name="server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="client" target="1.5" />
       <module name="common" target="6" />
+      <module name="mqtt" target="1.5" />
       <module name="server" target="1.5" />
       <module name="zc-server-dev" target="1.5" />
     </bytecodeTargetLevel>

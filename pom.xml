@@ -12,6 +12,7 @@
         <module>server</module>
         <module>client</module>
         <module>common</module>
+        <module>mqtt</module>
     </modules>
     <properties>
         <netty.version>5.0.0.Alpha1</netty.version>
